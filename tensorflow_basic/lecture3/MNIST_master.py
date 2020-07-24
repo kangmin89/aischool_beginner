@@ -86,9 +86,9 @@ for epoch in range(training_epochs):
     #......
     print('Epoch:', '%04d' % (epoch + 1), 'training cost =', '{:.9f}'.format(avg_cost))
     # ========================================================================
-    train_summary_writer.add_summary(a, early_stopped) ##
+    train_summary_writer.add_summary(a, epoch) ##
     val_accuracy, summaries = sess.run([accuracy, summary_op], feed_dict={X: mnist.validation.images, Y: mnist.validation.labels, keep_prob: 1.0})
-    val_summary_writer.add_summary(summaries, early_stopped) ##
+    val_summary_writer.add_summary(summaries, epoch) ##
     # ========================================================================
     print('Validation Accuracy:', val_accuracy)
     if val_accuracy > max:
